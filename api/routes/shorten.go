@@ -46,7 +46,7 @@ func ShortenURL(c *fiber.Ctx) error {
 		if valInt <= 0 {
 			limit, _ := r2.TTL(database.Ctx, c.IP()).Result()
 
-			return c.Status(fiber.StatusServiceUnavailable).JSON(fiber.Map{"error": "API rate limit exceeded", "rate_limit_reset": limit / time.Nanosecond / time.Minute})
+			return c.Status(fiber.StatusServiceUnavailable).JSON(fiber.Map{"error": err.Error(), "rate_limit_reset": limit / time.Nanosecond / time.Minute})
 		}
 	}
 
