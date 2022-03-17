@@ -14,14 +14,14 @@ import (
 )
 
 type request struct {
-	URL         string        `json:"url"`
-	CustomShort string        `json:"short"`
-	Expiry      time.Duration `json:"expiry"`
+	URL    string        `json:"urA"`
+	Short  string        `json:"short"`
+	Expiry time.Duration `json:"expiry"`
 }
 
 type response struct {
 	URL             string        `json:"url"`
-	CustomShort     string        `json:"short"`
+	Short           string        `json:"short"`
 	Expiry          time.Duration `json:"expiry"`
 	XRateRemaining  int           `json:"rate_limit"`
 	XRateLimitReset time.Duration `json:"rate_limit_reset"`
@@ -29,8 +29,7 @@ type response struct {
 
 func ShortenURL(c *fiber.Ctx) error {
 	body := new(request)
-
-	if err := c.BodyParser(&body); err != nil {
+	if err := c.BodyParser(body); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": err.Error()})
 	}
 
@@ -59,10 +58,10 @@ func ShortenURL(c *fiber.Ctx) error {
 	body.URL = helpers.EnforceHTTP(body.URL)
 
 	var id string
-	if body.CustomShort == "" {
+	if body.Short == "" {
 		id = uuid.NewString()[:6]
 	} else {
-		id = body.CustomShort
+		id = body.Short
 	}
 
 	r := database.CreateClient(0)
@@ -85,7 +84,7 @@ func ShortenURL(c *fiber.Ctx) error {
 
 	resp := response{
 		URL:             body.URL,
-		CustomShort:     "",
+		Short:           "",
 		Expiry:          body.Expiry,
 		XRateRemaining:  10,
 		XRateLimitReset: 30,
@@ -99,7 +98,7 @@ func ShortenURL(c *fiber.Ctx) error {
 	ttl, _ := r2.TTL(database.Ctx, c.IP()).Result()
 	resp.XRateLimitReset = ttl / time.Nanosecond / time.Minute
 
-	resp.CustomShort = os.Getenv("DOMAIN") + "/" + id
+	resp.Short = os.Getenv("DOMAIN") + "/" + id
 
 	return c.Status(fiber.StatusOK).JSON(resp)
 }
