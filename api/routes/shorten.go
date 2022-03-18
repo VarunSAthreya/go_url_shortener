@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/VarunSAthreya/go-url-shortner/database"
-	"github.com/VarunSAthreya/go-url-shortner/helpers"
+	"github.com/VarunSAthreya/go-url-shortener/database"
+	"github.com/VarunSAthreya/go-url-shortener/helpers"
 	"github.com/asaskevich/govalidator"
 	"github.com/go-redis/redis/v8"
 	"github.com/gofiber/fiber/v2"

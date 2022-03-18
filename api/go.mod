@@ -1,4 +1,4 @@
-module github.com/VarunSAthreya/go-url-shortner
+module github.com/VarunSAthreya/go-url-shortener
 
 go 1.17
 
