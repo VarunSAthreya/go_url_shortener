@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Go URL Shortener</title>
+    <meta name="description" content="Created by Varun S Athreya" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-3">URL Shortener</h1>
+        <form action="/api/v1" method="POST">
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input required type="text" class="form-control" id="url" aria-describedby="emailHelp"
+                    placeholder="Enter URL" name="url">
+            </div>
+            <div class="form-group">
+                <label for="short">Custom Short</label>
+                <input type="text" class="form-control" id="short" aria-describedby="emailHelp"
+                    placeholder="Enter custom short" name="short">
+            </div>
+
+            <div class="form-group">
+                <label for="expiry">Active days</label>
+                <input type="number" class="form-control" id="expiry" aria-describedby="emailHelp" placeholder="Active"
+                    name="expiry">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <footer class="footer fixed-bottom position-absolute bottom-0 text-muted text-center mb-3">
+        Made with ❤️ using <a class="font-weight-bold text-primary" href="https://go.dev/" target="_blank"
+            rel="noopener noreferrer">GO</a> by <a class="font-weight-bold text-monospace text-dark"
+            href="https://github.com/VarunSAthreya" target="_blank" rel="noopener noreferrer">VarunSAthreya</a>
+    </footer>
+</body>
+
+</html>
