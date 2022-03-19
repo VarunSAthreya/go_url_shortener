@@ -2,7 +2,7 @@
 
 ## Description
 
-    The project is a simple URL shortener that allows you to shorten your long URLs.
+The project is a simple URL shortener that allows you to shorten your long URLs.
 
 ## Requirements
 
