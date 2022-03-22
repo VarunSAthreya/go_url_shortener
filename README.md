@@ -47,3 +47,7 @@ Run:
 
 - [Get /<short>](/<short>)
   - redirect to original url
+
+### Demo
+
+![demo](./demo.gif)
