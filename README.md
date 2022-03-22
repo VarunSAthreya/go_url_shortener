@@ -45,7 +45,7 @@ Run:
     - short: Optional, string, custom short url
     - expire: Optional, int, expire time in days
 
-- [Get /<short>](/<short>)
+- [Get /"short"](/<short>)
   - redirect to original url
 
 ### Demo
